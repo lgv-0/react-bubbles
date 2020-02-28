@@ -99,9 +99,32 @@ const ColorList = ({ colors, updateColors }) =>
           </div>
         </form>
       )}
+        <form onSubmit={(e)=>
+        {
+          e.preventDefault();
+          let NewColor =
+          {
+            code:
+              {
+                hex:e.target.hex.value
+              },
+            color:e.target.name.value
+          }
+          axiosWithAuth().post("/colors", NewColor).then((response)=>
+          {
+            updateColors(response.data);
+          }).catch((error)=>
+          {
+            console.log(error.response.data);
+          })
+        }}>
+          <input type="text" name="name" placeholder="Name" />
+          <input type="text" name="hex" placeholder="Hex Color" />
+          <button type="submit">Add color</button>
+        </form>
       <div className="spacer" />
-      {/* stretch - build another form here to add a color */}
-    </div>
+
+      </div>
   );
 };
 
