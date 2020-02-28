@@ -34,7 +34,7 @@ const Login = () =>
     <>
       <h1>Welcome to the Bubble App!</h1>
       <div>
-        {FormData.error == "" ? null : FormData.error}
+        {FormData.error === "" ? null : FormData.error}
         <form onSubmit={(e)=>{e.preventDefault();SubmitForm();}} onChange={(e)=>{updateFormData(e);}}>
           <input type="text" name="username" placeholder="Username" defaultValue={FormData.username} />
           <input type="password" name="password" placeholder="Password" defaultValue={FormData.password} />
